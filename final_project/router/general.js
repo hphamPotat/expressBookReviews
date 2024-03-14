@@ -93,14 +93,7 @@ public_users.get("/author/:author", async function (req, res) {
       return res.status(400).send("Book not found");
     }
 
-    return res
-        .status(200)
-        .send(
-          "Book written by " +
-            book["author"] +
-            " Title " +
-            book["title"]
-        ); 
+    return res.status(200).send({"booksByAuthor": [book]}); 
 
   } catch(error) {
     return res.status(500).send('Unable to get details based on Author');
@@ -145,14 +138,7 @@ public_users.get("/title/:title", async function (req, res) {
 
     return res
         .status(200)
-        .send(
-          "Book written by " +
-            book["author"] +
-            " Title " +
-            book["title"] +
-            " with Reviews " +
-            book["reviews"]
-        );
+        .send({"booksByTitle": [book]});
 
   } catch(error) {
     return res.status(500).send('Unable to get details based on Title');
